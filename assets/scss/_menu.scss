@@ -1,0 +1,178 @@
+@import "./_mixins.scss";
+
+.mainNav {
+  @include mk-container();
+  height: 135px;
+  display: grid;
+  grid-template-columns: 90px auto 90px;
+
+  > * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__prev {
+    background: url("../gfx/back_ico.svg") 20% 50% no-repeat;
+    background-size: 18px;
+    cursor: pointer;
+    z-index: 3;
+  }
+
+  &__mainView {
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+
+    &--close {
+      display: none;
+    }
+  }
+
+  &__listView {
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+
+    &--close {
+      display: none;
+    }
+  }
+
+  &__moreView {
+    z-index: 3;
+
+    &--close {
+      display: none;
+    }
+  }
+
+  &__dots {
+    display: none;
+  }
+
+  &__dots + label {
+    background: url("../gfx/more_ico.svg") 50% 50% no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    width: 40px;
+    height: 30px;
+    margin: 0;
+    z-index: 3;
+  }
+
+  &__dots + label,
+  &__prev {
+    &:active,
+    &:focus,
+    &:hover {
+      filter: brightness(500%);
+    }
+  }
+}
+
+.mainMenu--open + .mainNav {
+  .mainNav__dots + label {
+    filter: brightness(500%);
+  }
+}
+
+.play {
+  display: block;
+  cursor: pointer;
+  background: url("../gfx/Play_inactive.png") no-repeat 50% 50%;
+
+  @include modifier(small) {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    z-index: 1;
+  }
+  @include modifier(off) {
+    background: url("../gfx/Play_inactive.png") 50% 50% no-repeat;
+    background-size: 120px;
+  }
+  @include modifier(on) {
+    background: url("../gfx/Play_active.png") 50% 50% no-repeat;
+    background-size: 120px;
+  }
+}
+
+.mainMenu {
+  @include trans;
+  @include mk-container();
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba($color-black-sub, .9);
+  z-index: 2;
+  opacity: 0;
+  display: flex;
+  justify-content: flex-end;
+  @include element(options) {
+    height: 890px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 120px;
+  }
+  @include modifier(open) {
+    left: 0;
+    opacity: 1;
+  }
+  @include modifier(close) {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+.hDots {
+  display: flex;
+  width: 100px;
+  height: 60px;
+  align-items: center;
+  justify-content: space-evenly;
+  @include element(dot) {
+    display: inline-block;
+    background: $color-gray;
+    height: 4px;
+    width: 4px;
+    border-radius: 4px;
+  }
+}
+
+.album {
+  @include element(cover) {
+    max-width: 190px;
+    max-height: 190px;
+  }
+  @include element(title) {
+    color: $color-green;
+    font-size: 36px;
+    margin-bottom: 15px;
+  }
+  @include element(artistName) {
+    color: $color-gray;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin: 0;
+  }
+}
+
+.menuOption {
+  color: $color-white;
+  font-size: 24px;
+  line-height: 3;
+  cursor: pointer;
+
+  &:active,
+  &:focus,
+  &:hover {
+    color: $color-silver;
+    text-decoration: none;
+  }
+}

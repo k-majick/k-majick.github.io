@@ -1,0 +1,164 @@
+@mixin leadingDots() {
+  position: absolute;
+  top: 20px;
+  width: 0;
+  white-space: nowrap;
+  z-index: -1;
+  content: " . . . . . . . . . . . . . . . . . . . . " " . . . . . . . . . . . . . . . . . . . . " " . . . . . . . . . . . . . . . . . . . . ";
+}
+
+.playList {
+  @include trans;
+  @include mk-container();
+  left: 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 890px;
+  background: $color-white;
+  z-index: 2;
+  color: $color-black-sub;
+  @include element(nav) {
+    display: flex;
+  }
+  @include element(info) {
+    position: relative;
+    width: 100%;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  @include element(toggle) {
+    width: 100px;
+    background: url("../../assets/gfx/playlist_ico.svg") no-repeat 0 50%;
+  }
+  @include element(hidden) {
+    position: absolute;
+    bottom: 15px;
+    left: 30px;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    z-index: 9;
+  }
+  @include modifier(open) {
+    bottom: 0;
+    justify-content: center;
+
+    .playList__nav {
+      display: none;
+    }
+
+    .songList__list {
+      margin-top: -45px;
+    }
+  }
+  @include modifier(close) {
+    bottom: -800px;
+  }
+}
+
+.playList--open + .playList__hidden {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.song {
+  position: relative;
+  @include element(title) {
+    font-size: 24px;
+    margin: 0;
+    background: white;
+    display: inline;
+  }
+  @include element(time) {
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+    font-size: 24px;
+    color: $color-gray;
+    margin: 0;
+    line-height: 1.1;
+  }
+}
+
+.songList {
+  position: relative;
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 25%, rgba(255,255,255,0.9) 75%);
+  }
+  @include element(list) {
+    li:before {
+      @include leadingDots();
+    }
+  }
+  @include element(item) {
+    position: relative;
+    padding: 15px 0;
+    color: $color-gray;
+  }
+  @include element(title) {
+    color: $color-black-sub;
+    padding: 0 5px 0 30px;
+    font-size: 24px;
+    margin: 0;
+    display: inline;
+    background: white;
+  }
+  @include element(subtitle) {
+    color: $color-white;
+    font-size: 24px;
+    margin: 0;
+    @include modifier(green) {
+      color: $color-green;
+      font-size: 24px;
+      margin: 0;
+    }
+  }
+  @include element(time) {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: $color-gray;
+    margin: 0;
+    line-height: 1.1;
+    background: white;
+  }
+}
+
+.btn {
+  @include element(shuffle) {
+    position: relative;
+    background: $color-green;
+    border: 0;
+    padding: 15px;
+    color: $color-white;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 30px;
+
+    &:after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 40px;
+      position: absolute;
+      left: 50%;
+      bottom: -55px;
+      transform: translateX(-50%) rotate(270deg);
+      background: url("../../assets/gfx/back_ico.svg") 50% 50% no-repeat;
+    }
+  }
+}

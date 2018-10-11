@@ -1,0 +1,104 @@
+app-main {
+  @include mk-container();
+  position: absolute;
+  height: 890px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  z-index: 1;
+}
+@mixin control() {
+  background: none;
+  border: 0;
+  width: 40px;
+  height: 40px;
+  z-index: 2;
+
+  &:active,
+  &:focus,
+  &:hover {
+    filter: brightness(500%);
+    outline: 0;
+    &:before {
+      outline: 0;
+    }
+  }
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+  width: 100%;
+  @include element(shuffle) {
+    @include control();
+    background: url("../gfx/shuffle_ico.svg") 50% 50% no-repeat;
+  }
+  @include element(swipe) {
+    @include modifier(left) {
+      @include control();
+      background: url("../gfx/previous_ico.svg") 50% 50% no-repeat;
+
+      &:disabled {
+        filter: brightness(50%);
+      }
+    }
+    @include modifier(right) {
+      @include control();
+      background: url("../gfx/next_ico.svg") 50% 50% no-repeat;
+
+      &:disabled {
+        filter: brightness(50%);
+      }
+    }
+  }
+  @include element(shuffle) {
+    @include control();
+    background: url("../gfx/shuffle_ico.svg") 50% 50% no-repeat;
+  }
+  @include element(repeat) {
+    @include control();
+    background: url("../gfx/repeat_ico.svg") 50% 50% no-repeat;
+  }
+  @include element(play) {
+    background: none;
+    position: relative;
+    border: 0;
+    width: 200px;
+    height: 300px;
+    z-index: 1;
+    outline: 0 !important;
+
+    &:before {
+      content: '';
+      background-size: 300px;
+      display: block;
+      width: 300px;
+      height: 300px;
+      position: absolute;
+      top: 0;
+      left: -50px;
+
+      &:active,
+      &:focus,
+      &:hover {
+        outline: 0;
+      }
+    }
+    @include modifier(off) {
+      &:before {
+        background: url("../gfx/Play_inactive.png") 50% 50% no-repeat;
+        background-size: 300px;
+      }
+    }
+    @include modifier(on) {
+      &:before {
+        background: url("../gfx/Play_active.png") 50% 50% no-repeat;
+        background-size: 300px;
+      }
+    }
+  }
+}

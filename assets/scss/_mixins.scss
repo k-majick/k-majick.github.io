@@ -1,0 +1,22 @@
+/* bem */
+@mixin element($name) {
+  @at-root #{&}__#{$name} {
+    @content;
+  }
+}
+@mixin modifier($name) {
+  @at-root #{&}--#{$name} {
+    @content;
+  }
+}
+@mixin trans {
+  transition: all 0.3s;
+}
+/* grid */
+@mixin mk-container() {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding-left: 50px;
+  padding-right: 50px;  
+}
