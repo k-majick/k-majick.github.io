@@ -1,0 +1,36 @@
+<header></header>
+
+<main>
+  <section class="mainBg"></section>
+
+  <app-menu class="mainMenu" (click)="toggleMenu()" [ngClass]="menuStatus ? 'mainMenu--open' : 'mainMenu--close'"></app-menu>
+
+  <section class="mainNav" [ngClass]="playlistStatus ? 'mainNav--open' : 'mainNav--close'">
+    <div class="mainNav__prev"></div>
+    <div class="mainNav__mainView" *ngIf="menuStatus === false" [ngClass]="playlistStatus ? 'mainNav__mainView--close' : 'mainNav__mainView--open'">
+      <h2 class="album__artistName">Album</h2>
+      <h4 class="songList__subtitle">{{albums[1].title}}</h4>
+    </div>
+    <div class="mainNav__listView" [ngClass]="playlistStatus ? 'mainNav__listView--open' : 'mainNav__listView--close'">
+      <h4 class="songList__subtitle--green">{{songs[2].title}}</h4>
+      <h2 class="album__artistName">{{albums[1].artist}}</h2>
+    </div>
+    <div class="mainNav__listView" [ngClass]="menuStatus ? 'mainNav__moreView--open' : 'mainNav__moreView--close'">
+    </div>
+    <div class="mainNav__nav" *ngIf="playlistStatus === false">
+      <input class="mainNav__dots" name="dots" type="checkbox" />
+      <label for="dots" (click)="toggleMenu()" ></label>
+    </div>
+    <div class="mainNav__nav" *ngIf="playlistStatus === true">
+      <a class="play play--small" (click)="togglePlay()" [ngClass]="playStatus ? 'play--on' : 'play--off'"></a>
+    </div>
+  </section>
+
+  <app-main></app-main>
+
+  <app-playlist class="playList" (click)="togglePlaylist()" [ngClass]="playlistStatus ? 'playList--open' : 'playList--close'"></app-playlist>
+  <a class="playList__hidden" (click)="togglePlaylist()"></a>
+
+</main>
+
+<footer></footer>

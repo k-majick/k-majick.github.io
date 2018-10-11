@@ -1,0 +1,19 @@
+<div class="playList__nav">
+  <a class="playList__toggle"></a>
+  <div class="playList__info">
+    <p class="album__artistName">next</p>
+    <h3 class="song__title">{{songs[0].title}}</h3>
+    <p class="song__time">{{songs[0].time}}</p>
+  </div>
+</div>
+
+<div class="songList">
+  <ol class="songList__list">
+    <li class="songList__item" *ngFor="let song of songs">
+      <h3 class="songList__title">{{song.title}}</h3>
+      <span class="songList__time">{{song.time}}</span>
+    </li>
+  </ol>
+</div>
+
+<button class="btn__shuffle">Shuffle Play</button>

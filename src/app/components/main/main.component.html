@@ -1,0 +1,16 @@
+<drag-scroll class="drag-scroll" scrollbar-hidden="true" drag-scroll-y-disabled="true" (indexChanged)="index = $event" (reachesLeftBound)="leftBoundStat($event)" (reachesRightBound)="rightBoundStat($event)" (snapAnimationFinished)="onSnapAnimationFinished()"
+  #nav>
+  <a drag-scroll-item class="drag-scroll__item" drag-scroll-item *ngFor="let album of albums">
+    <img class="img-responsive" (click)="clickItem(this)" src="{{album.coverImgSrc}}" />
+  </a>
+</drag-scroll>
+
+<h2 class="album__title">{{albums[1].title}}</h2>
+<h4 class="album__artistName">{{albums[1].artist}}</h4>
+<div class="controls">
+  <button class="controls__shuffle"></button>
+  <button class="controls__swipe--left" [disabled]="leftNavDisabled" (click)="moveLeft()"></button>
+  <button class="controls__play" (click)="togglePlay()" [ngClass]="playStatus ? 'controls__play--on' : 'controls__play--off'"></button>
+  <button class="controls__swipe--right" [disabled]="rightNavDisabled" (click)="moveRight()"></button>
+  <button class="controls__repeat"></button>
+</div>

@@ -1,0 +1,19 @@
+@import "./_mixins.scss";
+
+.drag-scroll-wrapper {
+  height: 320px !important;
+  width: 320px !important;
+  margin: 0 auto;
+}
+
+.drag-scroll-content {
+  overflow: hidden !important;
+}
+
+.drag-scroll {
+  margin-top: 30px;
+  @include element(item) {
+    cursor: pointer;
+    background: none;
+  }
+}

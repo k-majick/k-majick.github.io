@@ -1,0 +1,23 @@
+@import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "./_variables.scss";
+@import "./_layout.scss";
+@import "./_main.scss";
+@import "./_slider.scss";
+@import "./_menu.scss";
+@import "./_playlist.scss";
+
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+html {
+  overflow: hidden;
+}
+
+body,
+html {
+  position: relative;
+  height: 100%;
+  background-color: $color-green;
+  color: $color-white;
+  font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+  font-size: 100%;
+}
