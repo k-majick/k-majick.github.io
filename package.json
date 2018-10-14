@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "deploy": "ng build --prod",
-    "deploy-git": "ng build --prod --base-href https://k-majick.github.io/performante.github.io/ && angular-cli-ghpages --branch master --dir=dist/performante-player"
+    "deploy-git": "ng build --prod --base-href https://k-majick.github.io/ && angular-cli-ghpages --branch master --dir=dist/performante-player"
   },
   "private": true,
   "dependencies": {
